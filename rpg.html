@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<title>Street Fighter RPG</title>
+	
+</head>
+<body>
+<div class="container">
+	<div class="row"> <!-- 1 -->
+			<div class="col-xs-3 text-center userHealth"><h2>User Health: </h2>
+			</div> <!-- end userHealth -->
+			
+			<div class="col-xs-6 text-center logo"><img src="images/SF_Logo.png" width="450px" height="100px"></div>
+
+			<div class="col-xs-3 text-center comHealth">Computer Health: 
+			</div> <!--end comHealth div-->
+		<!-- 	<i put type="image" src="http://example.com/path/to/image.png" />
+		 -->
+		
+	</div> <!-- end row 1 -->
+	
+	<div class="row 2">
+		<div class="col-xs-2 damage">Attack Damage: 
+					</div>
+
+	</div> <!-- end row 2 -->
+	
+	<div class="row 3">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-6 buttons">
+			
+			<button class="punch bttn">PUNCH!</button>
+			<button class="kick bttn">KICK!</button>
+			<button class="special bttn">SPECIAL ATTACK!</button>
+			
+		<div class="col-xs-3"></div>
+
+		</div> <!-- end div buttons -->
+	</div> <!-- end row 3 -->
+	<div class="selector">
+		<div class="row 4">
+			<div class="col-xs-12 text-center choose">
+				<div>
+			 		Choose Your Fighter!
+				</div>
+			</div>
+		</div> <!-- end row 4 -->
+
+		<div class="row 5">
+			<div class="col-xs-12 text-center fighter">
+				
+				<input type="image" src="images/ryu/ryuFace.jpg" class="choiceOne player" data-divclass="ryu">
+
+				<input type="image" src="images/Ken/kenFace.jpg" class="choiceTwo player" data-divclass="ken">
+				
+
+			</div> <!-- end div buttons -->
+		</div> <!-- end row 5 -->
+	</div> <!-- end selector -->
+			<div class="row start">
+				<div class="col-xs-12 text-center start">
+				<button class="btn btn-primary btn-lg startbtn">Start Game</button>
+				<button class="btn btn-primary btn-lg readybtn">Ready?</button>
+				</div><!-- 	end start -->
+			</div> <!-- end row start -->
+	
+				<!-- <div class="fight">
+					<span class="playerOne"></span>
+					<span class="computer"></span>
+				</div>	 -->
+		<div class="row">
+			<div class="col-xs-12 text-center block">Blocked!</div>
+		</div>
+		<div class="row fighter">
+				<div class="col-xs-12 text-center fighters">
+					<div class="col-xs-6 text-right playerOne">
+					</div>
+					<div class="col-xs-6 text-left playerTwo">
+					</div>
+				</div>	
+		</div>	<!-- end row fighter -->
+</div> <!-- end container -->
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="assets/rpg.js"></script>
+
+
+
+
+
+</script>
+</body>
+</html>

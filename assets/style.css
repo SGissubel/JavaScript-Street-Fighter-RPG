@@ -1,0 +1,74 @@
+.container {
+	padding: 0;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	clear: both;
+}
+
+
+.choiceOne {
+	 width: 94px;
+	 height: 106px;
+}
+
+.choiceTwo {
+	 width: 94px;
+	 height: auto;
+}
+.choose,
+.userHealth,
+.comHealth {
+	font-size: 25px;
+}
+.fighter,
+.choose {
+	padding-top: 20px;
+}
+.startbtn,
+.readybtn {
+	width: 100%;
+	width: 800px;
+	background-color: #181820;
+}
+.ready.btn {
+	position: absolute;
+
+}
+.startbtn {
+	margin-top: 100px;
+}
+.block {
+	font-size: 30px;
+}
+
+body {
+	background-image: url("background.gif");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.start {
+	font-size: 30px;
+}
+
+.fighters {
+	overflow: auto;
+	position: relative;
+
+}
+button, 
+input {
+	color: black;
+}
+
+h3 {
+	color: white;
+}
+
+div {
+	color: white;
+}
+
+.fighters {
+	margin-top: 72px;
+}
