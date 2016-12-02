@@ -122,9 +122,7 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 				for (punch = userHealth-6; punch <= 100; punch += 6) {
 					$('.userHealth').text("User Health: " + userHealth);
 				}
-			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
-    		  }, 6000);
-			console.log(comAttackPoint);
+    		  };
 
 			if (punch >= 14){
 				comHealth = comHealth - 10;
