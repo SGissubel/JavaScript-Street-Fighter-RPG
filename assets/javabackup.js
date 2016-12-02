@@ -33,7 +33,7 @@ var playerOne = '';
 var playerTwo = '';
 var computerAttack;
 var keys;
-var randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)]
+randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)]
 
 
 	//choosing a player--make choosing a player the same as the calculator (choose number (character) ends the function--choose operator(othercharacter--ends other functions?)game starts ='s)
@@ -115,10 +115,17 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 			$('.playerOne').append(kenAttacks.kenPunchRight)
 			kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
 			punch = (Math.floor(Math.random()* 8) + 10);
-			// var comAttack = setTimeout(function(){
-				console.log(moves[randomMove]());
+			var comAttack = setTimeout(function(){
+			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+    		  }, 3000);
+			var comAttackPoint = setTimeout(function(){
+				for (punch = userHealth-6; punch <= 100; punch += 6) {
+					$('.userHealth').text("User Health: " + userHealth);
+				}
+			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+    		  }, 6000);
+			console.log(comAttackPoint);
 
-    		  // }, 3000);
 			if (punch >= 14){
 				comHealth = comHealth - 10;
 			}else {
