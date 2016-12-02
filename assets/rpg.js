@@ -14,16 +14,16 @@ var kick;
 var hit;
 var start = $("<img>").addClass("startBtn").attr("src", "images/ryuKenStartFight.gif");
 
-// var kenAttacks = [{
-	var kenPunchRight = $("<img>").addClass("kenPunchRight").attr("src", "images/Ken/kenPunchRight.gif");
+var kenAttacks = [{
+	kenPunchRight: $("<img>").addClass("kenPunchRight").attr("src", "../images/Ken/kenPunchRight.gif"),
 
-	var kenSpecialRight = $("<img>").addClass("kenSpecialRight").attr("src", "images/Ken/kenSpecialRight.gif");
-	var kenKickRight = $("<img>").addClass("kenKick").attr("src", "images/Ken/kenKickRight.gif");
- 	var kenPunchLeft = $("<img>").addClass("kenPunchLeft").attr("src", "images/Ken/kenPunchLeft.gif");
-	var kenSpecialLeft =  $("<img>").addClass("kenSpecialLeft").attr("src", "images/Ken/kenSpecialLeft.gif");
- 	var kenKickLeft = $("<img>").addClass("kenKickLeft").attr("src", "images/Ken/kenKickLeft.gif");
- // 	}
- // ]
+	kenSpecialRight: $("<img>").addClass("kenSpecialRight").attr("src", "../images/Ken/kenSpecialRight.gif"),
+	kenKickRight: $("<img>").addClass("kenKick").attr("src", "../images/Ken/kenKickRight"),
+ 	kenPunchLeft: $("<img>").addClass("kenPunchLeft").attr("src", "images/Ken/kenPunchLeft.gif"),
+	kenSpecialLeft: $("<img>").addClass("kenSpecialLeft").attr("src", "../images/Ken/kenSpecialLeft.gif"),
+ 	kenKickLeft: $("<img>").addClass("kenKickLeft").attr("src", "../images/Ken/kenKickLeft"),
+ 	}
+ ]
  var ryuAttacks = [{
 	ryuPunchRight: $("<img>").addClass("ryuPunchRight").attr("src", "images/ryu/ryuPunchRight.gif"),
 	ryuSpecialRight: $("<img>").addClass("ryuSpecialRight").attr("src", "images/ryu/ryuSpecialRight.gif"),
@@ -39,31 +39,29 @@ var ryuPlayerRight = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ry
 var ryuPlayerLeft = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyLeft.gif");
 var playerOne = '';
 var playerTwo = '';
-var ryuAttacks = ['ryuPunch', 'ryuKick', 'ryuSpecial'];
-var ryuPunch = '';
-var ryuKick = '';
-var ryuSpecial = '';
+var computerAttack;
 // var characters = {
-//    "ken": {
-//     image1: $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyRight.gif"),
-//     image2: $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyLeft.gif"),
-//     health: 100,
-// 	kenPunch: 6,
-// 	kenKick: 10,
-// 	kenSpecial: 15;
-// 	}
-//   "ryu": {
-// 	ryuPlayerRight: $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyRight.gif");
-// 	ryuPlayerLeft = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyLeft.gif");
-// 	health: 100,
-// 	ryuPunch: 
+	//    "ken": {
+	//     image1: $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyRight.gif"),
+	//     image2: $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyLeft.gif"),
+	//     health: 100,
+	// 	kenPunch: 6,
+	// 	kenKick: 10,
+	// 	kenSpecial: 15;
+	// 	}
+	//   "ryu": {
+	// 	ryuPlayerRight: $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyRight.gif");
+	// 	ryuPlayerLeft = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyLeft.gif");
+	// 	health: 100,
+	// 	ryuPunch: 
 
-//    }
-// }
+	//    }
+	// }
 
 	//choosing a player--make choosing a player the same as the calculator (choose number (character) ends the function--choose operator(othercharacter--ends other functions?)game starts ='s)
 	
 	//loading window stuff
+
 $(document).ready(function() {
 
 	$(window).load(function (){
@@ -81,35 +79,7 @@ $(document).ready(function() {
 
 	});
 
-// 	$('.player').on('click', function () {
-//     if (playerOne != "") {
-//     playerOne = $(this).hide;
-//     $('.playerOne').append(this);
-//     } else {
-//       computer = $(this).hide;
-//       $('.computer').append(this);
-//       $(this).attr("src", "images/ryu/ryuReadyLeft.gif");
-//     }
-// });
-//array for every character. (look up array of objects js)--objects inside of array [{0}{1}{2}{3}]
 
-
-//this works--make it better though. 
-// $('.choiceOne, .choiceTwo').on('click', function () {
-// 	$(this).hide();
-// 	var divClass = $(this).data('divclass');
-
-// 	if (divClass == 'ryu'){
-// 		$('.playerOne').append(ryuPlayerRight);
-
-// 	}else if(divClass == 'ken'){
-// 		$('.playerOne').append(kenPlayerRight);
-// 		$('.playerTwo').append(ryuPlayerLeft);
-// 	}
-// });
-
-
-// this didn't work
 $('.choiceOne, .choiceTwo').on('click', function () {
 	$(this).hide();
 	var divClass = $(this).data('divclass');
@@ -161,15 +131,21 @@ var randomProperty = function (obj) {
 		$('.choose').hide();
 	});
 
-
-	$('.special').on('click', function () {
-		if (divClass === 'ken') {
-		kenttacks.kenPlayerRight.hide().delay(2500).fadeIn();
-		$('.computer').append(kenAttacks.kenSpecialRight);
-		kenAttacks.kenSpecialRight.show().delay(1200).fadeOut();}
-		special = (Math.floor(Math.random()* 10) + 25);
+	$(document).on('click','.special, .punch, .kick',  function () {
 		$('.comHealth').text("Computer Health: " + comHealth);
 		$('.userHealth').text("User Health: " + userHealth);
+	}) 
+
+	$(document).on('click','.special', function () {
+		special = (Math.floor(Math.random()* 10) + 25);
+		if ('.playerOne' === kenPlayerRight){
+			kenPlayerRight.hide().delay(2500).fadeIn();
+			$('.playerTwo').append(kenAttacks.kenPunch).delay(2500).fadeOut();
+
+			// $('.playerOne').append(----);
+			// $('').show().delay(1200).fadeOut();
+		}
+		
 		if (special >= 30) {
 			$('.block').show().delay(2000).fadeOut();
 			comHealth = comHealth - 5;
@@ -178,6 +154,7 @@ var randomProperty = function (obj) {
 			comHealth = comHealth - 25;
 			$('.damage').text('Attack Damage: -25');
 		}
+
 		  // ryuPunch = setTimeout(function punch() {
 		  //   ryuPlayerRight.hide().delay(2500).fadeIn();
 		  //   ryuPunch = setTimeout(punch(), 3000)
@@ -186,10 +163,9 @@ var randomProperty = function (obj) {
 		
 		$('.punch').on('click', function(){
 			kenAttacks.kenPlayerLeft.hide().delay(2000).fadeIn();
-		$('.computer').append(kenAttacks.kenPunch);
+		$('.playerTwo').append(kenAttacks.kenPunch);
 		kenAttacks.kenPunch.show().delay(2000).fadeOut();
 		punch = (Math.floor(Math.random()* 8) + 10);
-		$('.comHealth').text("Computer Health: " + comHealth);
 			if (punch >= 14){
 				comHealth = comHealth - 10;
 			}else {
@@ -202,7 +178,6 @@ var randomProperty = function (obj) {
 		$('.kick').on('click', function(){
 		kick = (Math.floor(Math.random()* 8) + 12);
 		comHealth = comHealth - kick;
-		$('.comHealth').text("Computer Health: " + comHealth);
 
 		})//end kick function
 
