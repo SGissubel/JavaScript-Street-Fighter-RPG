@@ -9,6 +9,9 @@ var kenAttacks = {
 
 	kenSpecialRight: $("<img>").addClass("kenSpecialRight").attr("src", "images/Ken/kenSpecialRight.gif"),
 	kenKickRight: $("<img>").addClass("kenKick").attr("src", "images/Ken/kenKickRight.gif"),
+	kenNoogieRight: $("<img>").addClass("kenNoogieRight").attr("src", "images/Ken/kenNoogieRight.gif"),
+	kenNoggieLeft: $("<img>").addClass("kenNoogieLeft").attr("src", "images/Ken/kenNoogieLeft.gif"),
+ 	
  	kenPunchLeft: $("<img>").addClass("kenPunchLeft").attr("src", "images/Ken/kenPunchLeft.gif"),
 	kenSpecialLeft: $("<img>").addClass("kenSpecialLeft").attr("src", "images/Ken/kenSpecialLeft.gif"),
  	kenKickLeft: $("<img>").addClass("kenKickLeft").attr("src", "images/Ken/kenKickLeft.gif"),
@@ -120,20 +123,33 @@ $(document).on('click','.special, .punch, .kick',  function () {
 		$('.userHealth').text("User Health: " + userHealth);
 	}) 
 
+
+
 	$(document).on('click','.special', function () {
+			
+			special = (Math.floor(Math.random()* 10) + 25);
+
+			if (special >= 30){
+				comHealth = comHealth - 10;
+			}else if (special <= 30){
+			$('.block').show().delay(2000).fadeOut();
+				comHealth = comHealth - 2;
+			} 
 		
 		if (playerOne == 'ken'){
 			$('.playerOne').html(kenAttacks.kenSpecialRight);
-
+			
+			
 			setTimeout(function(){
 				$('.playerOne').html(kenPlayerRight);
 			}, 2000);
-			comHealth = comHealth - 15;
 
 			computerAttack = setTimeout(function (){
-				
+				for (userHealth = userHealth-6;; userHealth += 6) {
+						$('.userHealth').text("User Health: " + userHealth);
+					}
 				$('.playerTwo').html(randomMoveRyu[moves]);
-			}, 2500);
+			}, 3000);
 			
 
 
@@ -142,6 +158,7 @@ $(document).on('click','.special, .punch, .kick',  function () {
 			$('.playerOne').html(ryuAttacks.ryuSpecialRight)
 
 			setTimeout(function(){
+				comHealth = comHealth - 15;
 				$('.playerOne').html(ryuPlayerRight);
 			}, 4000);
 		}
@@ -152,19 +169,35 @@ $(document).on('click','.special, .punch, .kick',  function () {
 //********************************************************PUNCH******************************************************
 
 	$(document).on('click','.punch', function () {
+
+				punch = (Math.floor(Math.random()* 8) + 10);
+
+				if (punch >= 30){
+					comHealth = comHealth - 10;
+				}else if (special <= 30){
+				$('.block').show().delay(2000).fadeOut();
+					comHealth = comHealth - 2;
+				} 
+
 			
 			if (playerOne == 'ken'){
 				$('.playerOne').html(kenAttacks.kenPunchRight);
+				
+				setTimeout(function(){
+					ryuPlayerLeft.hide().delay(2000).fadeIn();
 
+					$('.playerOne').html(kenAttacks.kenNoogieRight);
+				}, 2000);
+				
 				setTimeout(function(){
 					$('.playerOne').html(kenPlayerRight);
-				}, 2000);
-				comHealth = comHealth - 15;
+				}, 3000);
+				comHealth = comHealth - 5;
 
 				computerAttack = setTimeout(function (){
 					
 					$('.playerTwo').html(randomMoveRyu[moves]);
-				}, 2500);
+				}, 3500);
 				
 
 
@@ -173,8 +206,8 @@ $(document).on('click','.special, .punch, .kick',  function () {
 				$('.playerOne').html(ryuAttacks.ryuPunchRight)
 
 				setTimeout(function(){
-					$('.playerOne').html(ryuPunchRight);
-				}, 4000);
+					$('.playerOne').html(ryuPlayerRight);
+				}, 6500);
 			}
 
 	});	
@@ -189,13 +222,13 @@ $(document).on('click','.special, .punch, .kick',  function () {
 
 				setTimeout(function(){
 					$('.playerOne').html(kenPlayerRight);
-				}, 2000);
-				comHealth = comHealth - 15;
+				}, 1000);
+				comHealth = comHealth - 10;
 
 				computerAttack = setTimeout(function (){
 					
 					$('.playerTwo').html(randomMoveRyu[moves]);
-				}, 2500);
+				}, 1500);
 				
 
 
