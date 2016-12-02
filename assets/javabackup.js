@@ -146,33 +146,97 @@ $(document).on('click','.special, .punch, .kick',  function () {
 			}, 4000);
 		}
 
-$(document).on('click','.punch', function () {
-		special = (Math.floor(Math.random()* 10) + 25);
-			kenPlayerRight.hide().delay(2500).fadeIn();
-			$('.playerOne').append(kenAttacks.kenPunchRight)
-			kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
-			punch = (Math.floor(Math.random()* 8) + 10);
-			var comAttack = setTimeout(function(){
-			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
-    		  }, 3000);
-			
-			var comAttackPoint = setTimeout(function(){
-			
-			for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
-					$('.userHealth').text("User Health: " + userHealth);
-				}
-    		});
+	});	
 
-			if (punch >= 14){
-				comHealth = comHealth - 10;
+
+//********************************************************PUNCH******************************************************
+
+	$(document).on('click','.punch', function () {
+			
+			if (playerOne == 'ken'){
+				$('.playerOne').html(kenAttacks.kenPunchRight);
+
+				setTimeout(function(){
+					$('.playerOne').html(kenPlayerRight);
+				}, 2000);
+				comHealth = comHealth - 15;
+
+				computerAttack = setTimeout(function (){
+					
+					$('.playerTwo').html(randomMoveRyu[moves]);
+				}, 2500);
+				
+
+
+
 			}else {
-			$('.block').show().delay(2000).fadeOut();
-				comHealth = comHealth - 2;
-			} 
+				$('.playerOne').html(ryuAttacks.ryuPunchRight)
+
+				setTimeout(function(){
+					$('.playerOne').html(ryuPunchRight);
+				}, 4000);
+			}
+
+	});	
+
+
+//********************************************************KICK******************************************************
+
+	$(document).on('click','.kick', function () {
+			
+			if (playerOne == 'ken'){
+				$('.playerOne').html(kenAttacks.kenKickRight);
+
+				setTimeout(function(){
+					$('.playerOne').html(kenPlayerRight);
+				}, 2000);
+				comHealth = comHealth - 15;
+
+				computerAttack = setTimeout(function (){
+					
+					$('.playerTwo').html(randomMoveRyu[moves]);
+				}, 2500);
+				
+
+
+
+			}else {
+				$('.playerOne').html(ryuAttacks.ryuKickRight)
+					kenPlayerLeft.hide().delay(2000).fadeIn();
+
+				setTimeout(function(){
+					$('.playerOne').html(ryuPlayerRight);
+				}, 2000);
+			}
+
+	});	
+// $(document).on('click','.punch', function () {
+// 		special = (Math.floor(Math.random()* 10) + 25);
+// 			kenPlayerRight.hide().delay(2500).fadeIn();
+// 			$('.playerOne').append(kenAttacks.kenPunchRight)
+// 			kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
+// 			punch = (Math.floor(Math.random()* 8) + 10);
+// 			var comAttack = setTimeout(function(){
+// 			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+//     		  }, 3000);
+			
+// 			var comAttackPoint = setTimeout(function(){
+			
+// 			for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
+// 					$('.userHealth').text("User Health: " + userHealth);
+// 				}
+//     		});
+
+// 			if (punch >= 14){
+// 				comHealth = comHealth - 10;
+// 			}else {
+// 			$('.block').show().delay(2000).fadeOut();
+// 				comHealth = comHealth - 2;
+// 			} 
 
 		
 	
-	});
+// 	});
 		// debugger;
 		// special = (Math.floor(Math.random()* 10) + 25);
 
@@ -206,7 +270,7 @@ $(document).on('click','.punch', function () {
 
 		// $('.comHealth').text("Computer Health: " + comHealth);
 		// $('.userHealth').text("User Health: " + userHealth);
-	});		
+	
 });
 
 
