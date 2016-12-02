@@ -119,10 +119,10 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
     		  }, 3000);
 			var comAttackPoint = setTimeout(function(){
-				for (punch = userHealth-6; punch <= 100; punch += 6) {
+				for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
 					$('.userHealth').text("User Health: " + userHealth);
 				}
-    		  };
+    		  });
 
 			if (punch >= 14){
 				comHealth = comHealth - 10;
