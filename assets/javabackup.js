@@ -33,7 +33,7 @@ var playerOne = '';
 var playerTwo = '';
 var computerAttack;
 var keys;
-randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)]
+var randomMoveRyu = moves[Math.floor(Math.random()*ryuAttacks.length)]
 
 
 	//choosing a player--make choosing a player the same as the calculator (choose number (character) ends the function--choose operator(othercharacter--ends other functions?)game starts ='s)
@@ -42,10 +42,10 @@ randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)]
 
 $(document).ready(function() {
 
-	$(document).on('click','.special, .punch, .kick',  function () {
-		$('.comHealth').text("Computer Health: " + comHealth);
-		$('.userHealth').text("User Health: " + userHealth);
-	}) 
+	// $(document).on('click','.special, .punch, .kick',  function () {
+	// 	$('.comHealth').text("Computer Health: " + comHealth);
+	// 	$('.userHealth').text("User Health: " + userHealth);
+	// }) 
 
 	$(window).load(function (){
 		$('.readybtn').hide()
@@ -68,11 +68,17 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 		$('.playerOne').append(ryuPlayerRight);
 		$('.playerTwo').append(kenPlayerLeft);
 		$('.choiceTwo').hide();
+
+		playerOne = 'ryu';
+		playerTwo = 'ken'
 	} 
 	else if (divClass == 'ken') {
 	 	$('.playerOne').append(kenPlayerRight); 
 	 	$('.playerTwo').append(ryuPlayerLeft)
 	 	$('.choiceOne').hide();
+
+	 	playerOne = 'ken';
+	 	playerTwo = 'ryu';
 	 }
 	  
 });
@@ -107,9 +113,40 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 	
 	});
 
+//**********************************************ATTACKS******************************************************
 
+$(document).on('click','.special, .punch, .kick',  function () {
+		$('.comHealth').text("Computer Health: " + comHealth);
+		$('.userHealth').text("User Health: " + userHealth);
+	}) 
 
 	$(document).on('click','.special', function () {
+		
+		if (playerOne == 'ken'){
+			$('.playerOne').html(kenAttacks.kenSpecialRight);
+
+			setTimeout(function(){
+				$('.playerOne').html(kenPlayerRight);
+			}, 2000);
+			comHealth = comHealth - 15;
+
+			computerAttack = setTimeout(function (){
+				
+				$('.playerTwo').html(randomMoveRyu[moves]);
+			}, 2500);
+			
+
+
+
+		}else {
+			$('.playerOne').html(ryuAttacks.ryuSpecialRight)
+
+			setTimeout(function(){
+				$('.playerOne').html(ryuPlayerRight);
+			}, 4000);
+		}
+
+$(document).on('click','.punch', function () {
 		special = (Math.floor(Math.random()* 10) + 25);
 			kenPlayerRight.hide().delay(2500).fadeIn();
 			$('.playerOne').append(kenAttacks.kenPunchRight)
@@ -118,11 +155,13 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 			var comAttack = setTimeout(function(){
 			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
     		  }, 3000);
+			
 			var comAttackPoint = setTimeout(function(){
-				for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
+			
+			for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
 					$('.userHealth').text("User Health: " + userHealth);
 				}
-    		  });
+    		});
 
 			if (punch >= 14){
 				comHealth = comHealth - 10;
@@ -134,12 +173,47 @@ $(document).on('click','.choiceOne, .choiceTwo', function () {
 		
 	
 	});
+		// debugger;
+		// special = (Math.floor(Math.random()* 10) + 25);
 
 
 
+		// kenPlayerRight.hide().delay(2500).fadeIn();
 
+		// $('.playerOne').append(kenAttacks.kenPunchRight)
 
+		// kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
+
+		// punch = (Math.floor(Math.random()* 8) + 10);
+
+		// var comAttack = setTimeout(function(){
+		// 	randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+
+		// }, 3000);
+			
+		// var comAttackPoint = setTimeout(function(){
+		
+		// for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
+		// 	$('.userHealth').text("User Health: " + userHealth);
+		// }
+
+		// if (punch >= 14){
+		// 	comHealth = comHealth - 10;
+		// }else {
+		// 	$('.block').show().delay(2000).fadeOut();
+		// 	comHealth = comHealth - 2;
+		// } 
+
+		// $('.comHealth').text("Computer Health: " + comHealth);
+		// $('.userHealth').text("User Health: " + userHealth);
+	});		
 });
+
+
+
+
+
+
 
 // $(document).on('click', '.punch', function (){
 // 	$('.playerTwo').append(kenAttacks.kenPunch);
