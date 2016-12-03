@@ -127,15 +127,15 @@ $(document).on('click','.special, .punch, .kick',  function () {
 
 	$(document).on('click','.special', function () {
 			
-			special = (Math.floor(Math.random()* 10) + 25);
+			// special = (Math.floor(Math.random()* 10) + 25);
 
-			if (special >= 30){
-				comHealth = comHealth - 10;
-			}else if (special <= 30){
-			$('.block').show().delay(2000).fadeOut();
-				comHealth = comHealth - 2;
-			} 
-		
+			// if (special >= 30){
+			// 	comHealth = comHealth - 10;
+			// }else if (special <= 30){
+			// $('.block').show().delay(2000).fadeOut();
+			// 	comHealth = comHealth - 2;
+			// } 
+//ken		
 		if (playerOne == 'ken'){
 			$('.playerOne').html(kenAttacks.kenSpecialRight);
 			
@@ -145,15 +145,19 @@ $(document).on('click','.special, .punch, .kick',  function () {
 			}, 2000);
 
 			computerAttack = setTimeout(function (){
+				// function attacking(){
+				// 	return (Math)
+				// }
 				for (userHealth = userHealth-6;; userHealth += 6) {
 						$('.userHealth').text("User Health: " + userHealth);
 					}
-				$('.playerTwo').html(randomMoveRyu[moves]);
+				
+				$('.playerTwo').html(Object.keys(randomMoveRyu));
 			}, 3000);
 			
 
 
-
+//ryu
 		}else {
 			$('.playerOne').html(ryuAttacks.ryuSpecialRight)
 
