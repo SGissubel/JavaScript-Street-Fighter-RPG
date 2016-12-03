@@ -4,39 +4,43 @@ var damage = 0; //display damage points
 var special = '';
 var start = $("<img>").addClass("startBtn").attr("src", "images/ryuKenStartFight.gif");
 
-var kenAttacks = {
+var kenAttacksRight = {
 	kenPunchRight: $("<img>").addClass("kenPunchRight").attr("src", "images/Ken/kenPunchRight.gif"),
 
 	kenSpecialRight: $("<img>").addClass("kenSpecialRight").attr("src", "images/Ken/kenSpecialRight.gif"),
 	kenKickRight: $("<img>").addClass("kenKick").attr("src", "images/Ken/kenKickRight.gif"),
 	kenNoogieRight: $("<img>").addClass("kenNoogieRight").attr("src", "images/Ken/kenNoogieRight.gif"),
+ 	
+ 	}
+var kenAttacksLeft = {
+
 	kenNoggieLeft: $("<img>").addClass("kenNoogieLeft").attr("src", "images/Ken/kenNoogieLeft.gif"),
  	
  	kenPunchLeft: $("<img>").addClass("kenPunchLeft").attr("src", "images/Ken/kenPunchLeft.gif"),
 	kenSpecialLeft: $("<img>").addClass("kenSpecialLeft").attr("src", "images/Ken/kenSpecialLeft.gif"),
  	kenKickLeft: $("<img>").addClass("kenKickLeft").attr("src", "images/Ken/kenKickLeft.gif"),
  	}
-
- var ryuAttacks = {
+ var ryuAttacksRight = {
 	ryuPunchRight: $("<img>").addClass("ryuPunchRight").attr("src", "images/ryu/ryuPunchRight.gif"),
 	ryuSpecialRight: $("<img>").addClass("ryuSpecialRight").attr("src", "images/ryu/ryuFireBallRight.gif"),
  	ryuKickRight: $("<img>").addClass("ryuKick").attr("src", "images/ryu/ryuKickRight.gif"),
+ 	}
+  var ryuAttacksLeft = {
 	ryuPunchLeft: $("<img>").addClass("ryuPunchLeft").attr("src", "images/ryu/ryuPunchLeft.gif"),
 	ryuSpecialLeft: $("<img>").addClass("ryuSpecialLeft").attr("src", "images/ryu/ryuFireBallLeft.gif"),
  	ryuKickLeft: $("<img>").addClass("ryuKickLeft").attr("src", "images/ryu/ryuKickLeft.gif"),
  	}
- 
-var moves = ['ryuPunchLeft','ryuSpecialLeft', 'ryuKickLeft'];
+// var moves = ['ryuPunchLeft','ryuSpecialLeft', 'ryuKickLeft'];
 
 var kenPlayerRight = $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyRight.gif");
 var kenPlayerLeft = $("<img>").addClass("kenPlayer").attr("src", "images/Ken/kenReadyLeft.gif");
 var ryuPlayerRight = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyRight.gif");
 var ryuPlayerLeft = $("<img>").addClass("ryuPlayer").attr("src", "images/ryu/ryuReadyLeft.gif");
-var playerOne = '';
-var playerTwo = '';
+
 var computerAttack;
 var keys;
-var randomMoveRyu = moves[Math.floor(Math.random()*ryuAttacks.length)]
+// var randomMoveRyu = moves[Math.floor(Math.random()*ryuAttacks.length)]
+var compSpecial = 6;
 
 
 	//choosing a player--make choosing a player the same as the calculator (choose number (character) ends the function--choose operator(othercharacter--ends other functions?)game starts ='s)
@@ -127,17 +131,17 @@ $(document).on('click','.special, .punch, .kick',  function () {
 
 	$(document).on('click','.special', function () {
 			
-			// special = (Math.floor(Math.random()* 10) + 25);
+			special = (Math.floor(Math.random()* 10) + 25);
 
-			// if (special >= 30){
-			// 	comHealth = comHealth - 10;
-			// }else if (special <= 30){
-			// $('.block').show().delay(2000).fadeOut();
-			// 	comHealth = comHealth - 2;
-			// } 
+			if (special >= 30){
+				comHealth = comHealth - 10;
+			}else if (special <= 30){
+			$('.block').show().delay(2000).fadeOut();
+				comHealth = comHealth - 2;
+			} 
 //ken		
 		if (playerOne == 'ken'){
-			$('.playerOne').html(kenAttacks.kenSpecialRight);
+			$('.playerOne').html(kenAttacksRight.kenSpecialRight);
 			
 			
 			setTimeout(function(){
@@ -145,21 +149,37 @@ $(document).on('click','.special, .punch, .kick',  function () {
 			}, 2000);
 
 			computerAttack = setTimeout(function (){
-				// function attacking(){
-				// 	return (Math)
-				// }
-				for (userHealth = userHealth-6;; userHealth += 6) {
-						$('.userHealth').text("User Health: " + userHealth);
-					}
-				
-				$('.playerTwo').html(Object.keys(randomMoveRyu));
+				var hit = (function () {
+					$('.userHeatlh').text(compSpecial += 6);
+					console.log(hit);
+				})
+				// for (compSpecial = 6; compSpecial += 6; compSpecial += 6) {
+				// 		console.log(compSpecial)
+				// 		// $('.userHealth').text("User Health: " + (userHealth - compSpecial));
+				// 	}
+				$('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random()*Object.keys(ryuAttacksLeft).length)]])
+				// $('.playerTwo').html(moves);
 			}, 3000);
-			
+				
+
+			setTimeout(function(){
+				('.playerTwo').html(ryuPlayerLeft);
+
+					if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
+						userHealth - 6;
+					} else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
+						('.playerTwo').html(ryuPlayerLeft);
+						userHealth - 12;
+					}else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
+						('.playerTwo').html(ryuPlayerLeft);
+						userHealth - 20;
+					}
+				}, 6001);
 
 
 //ryu
 		}else {
-			$('.playerOne').html(ryuAttacks.ryuSpecialRight)
+			$('.playerOne').html(ryuAttacksRight.ryuSpecialRight)
 
 			setTimeout(function(){
 				comHealth = comHealth - 15;
@@ -185,29 +205,42 @@ $(document).on('click','.special, .punch, .kick',  function () {
 
 			
 			if (playerOne == 'ken'){
-				$('.playerOne').html(kenAttacks.kenPunchRight);
+				$('.playerOne').html(kenAttacksRight.kenPunchRight);
 				
 				setTimeout(function(){
 					ryuPlayerLeft.hide().delay(2000).fadeIn();
 
-					$('.playerOne').html(kenAttacks.kenNoogieRight);
-				}, 2000);
+					$('.playerOne').html(kenAttacksRight.kenNoogieRight);
+					}, 2000);
 				
 				setTimeout(function(){
 					$('.playerOne').html(kenPlayerRight);
-				}, 3000);
-				comHealth = comHealth - 5;
+					}, 3000);
+					comHealth = comHealth - 5;
 
 				computerAttack = setTimeout(function (){
-					
-					$('.playerTwo').html(randomMoveRyu[moves]);
-				}, 3500);
+					$('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random()*Object.keys(ryuAttacksLeft).length)]])
+
+					}, 3500);
 				
+				setTimeout(function(){
+					('.playerTwo').html(ryuPlayerLeft);
+
+						if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
+							userHealth - 6;
+						} else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
+							('.playerTwo').html(ryuPlayerLeft);
+							userHealth - 12;
+						}else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
+							('.playerTwo').html(ryuPlayerLeft);
+							userHealth - 20;
+						}
+					}, 6001);
 
 
 
 			}else {
-				$('.playerOne').html(ryuAttacks.ryuPunchRight)
+				$('.playerOne').html(ryuAttacksRight.ryuPunchRight)
 
 				setTimeout(function(){
 					$('.playerOne').html(ryuPlayerRight);
@@ -222,7 +255,7 @@ $(document).on('click','.special, .punch, .kick',  function () {
 	$(document).on('click','.kick', function () {
 			
 			if (playerOne == 'ken'){
-				$('.playerOne').html(kenAttacks.kenKickRight);
+				$('.playerOne').html(kenAttacksRight.kenKickRight);
 
 				setTimeout(function(){
 					$('.playerOne').html(kenPlayerRight);
@@ -230,15 +263,27 @@ $(document).on('click','.special, .punch, .kick',  function () {
 				comHealth = comHealth - 10;
 
 				computerAttack = setTimeout(function (){
-					
+					$('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random()*Object.keys(ryuAttacksLeft).length)]])
 					$('.playerTwo').html(randomMoveRyu[moves]);
 				}, 1500);
-				
+			setTimeout(function(){
+				('.playerTwo').html(ryuPlayerLeft);
+
+					if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
+						userHealth - 6;
+					} else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
+						('.playerTwo').html(ryuPlayerLeft);
+						userHealth - 12;
+					}else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
+						('.playerTwo').html(ryuPlayerLeft);
+						userHealth - 20;
+					}
+				}, 6001);				
 
 
 
 			}else {
-				$('.playerOne').html(ryuAttacks.ryuKickRight)
+				$('.playerOne').html(ryuAttacksRight.ryuKickRight)
 					kenPlayerLeft.hide().delay(2000).fadeIn();
 
 				setTimeout(function(){
