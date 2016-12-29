@@ -60,8 +60,8 @@ var comPoints = 0;
 $(document).ready(function() {
 
     // $(document).on('click','.special, .punch, .kick',  function () {
-    //  $('.comHealth').text("Computer Health: " + comHealth);
-    //  $('.userHealth').text("User Health: " + userHealth);
+    // 	$('.comHealth').text("Computer Health: " + comHealth);
+    // 	$('.userHealth').text("User Health: " + userHealth);
     // }) 
 
     $(window).load(function() {
@@ -76,25 +76,6 @@ $(document).ready(function() {
 
     });
 
-    function winLose () { 
-
-     if (userHealth <= 0) {
-        $('.playerOne').hide();
-        $('.playerTwo').hide();
-        $('.block').text('YOU LOSE!');
-
-     } else if (comHealth <= 0) {
-         $('.block').text('WINNER!');
-         //reset userHealth to 100;
-
-        bossBattle();
-
-         $(document).on('click', '.special, .punch, .kick', function() {
-             $('.comHealth').text("Computer Health: " + comHealth);
-             $('.userHealth').text("User Health: " + userHealth);
-         })
-     }
-    }
 
     $(document).on('click', '.choiceOne, .choiceTwo', function() {
         $(this).hide();
@@ -104,14 +85,14 @@ $(document).ready(function() {
             $('.playerOne').append(ryuPlayerRight);
             $('.playerTwo').append(kenPlayerLeft);
             $('.choiceTwo').hide();
-            $('.choose').hide();
+
             playerOne = 'ryu';
             playerTwo = 'ken'
         } else if (divClass == 'ken') {
             $('.playerOne').append(kenPlayerRight);
             $('.playerTwo').append(ryuPlayerLeft)
             $('.choiceOne').hide();
-            $('.choose').hide();
+
             playerOne = 'ken';
             playerTwo = 'ryu';
         }
@@ -153,7 +134,6 @@ $(document).ready(function() {
     $(document).on('click', '.special, .punch, .kick', function() {
         $('.comHealth').text("Computer Health: " + comHealth);
         $('.userHealth').text("User Health: " + userHealth);
-        winLose();
     })
 
 
@@ -163,14 +143,14 @@ $(document).ready(function() {
 
         special = (Math.floor(Math.random() * 10) + 25);
 
-        if (special >= 30) {
-            comHealth = comHealth - 10;
-        } else if (special <= 30) {
-            $('.block').show().delay(2000).fadeOut();
-            comHealth = comHealth - 2;
-        }
+        // if (special >= 30) {
+        //     comHealth = comHealth - 10;
+        // } else if (special <= 30) {
+        //     $('.block').show().delay(2000).fadeOut();
+        //     comHealth = comHealth - 2;
+        // }
 
-        //ken   
+        //ken	
         special = (Math.floor(Math.random() * 15) + 15);
 
         if (special >= 25) {
@@ -192,11 +172,11 @@ $(document).ready(function() {
             computerAttack = setTimeout(function() {
 
                 // for (compSpecial = 6; compSpecial += 6; compSpecial += 6) {
-                //      console.log(compSpecial)
-                //      // $('.userHealth').text("User Health: " + (userHealth - compSpecial));
-                //  }
+                // 		console.log(compSpecial)
+                // 		// $('.userHealth').text("User Health: " + (userHealth - compSpecial));
+                // 	}
                 $('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random() * Object.keys(ryuAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 4));
+                $('.damage').html('Attack Damage: ' + (comPoints += 8));
                 userHealth = userHealth - comPoints;
 
             }, 3000);
@@ -206,11 +186,11 @@ $(document).ready(function() {
                 $('.playerTwo').html(ryuPlayerLeft);
 
                 // if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
-                //  userHealth = userHealth - 6;
+                // 	userHealth = userHealth - 6;
                 // } else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
-                //  userHealth = userHealth - 12;
+                // 	userHealth = userHealth - 12;
                 // }else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
-                //  userHealth = userHealth - 20;
+                // 	userHealth = userHealth - 20;
                 // }
             }, 6001);
 
@@ -226,11 +206,11 @@ $(document).ready(function() {
             computerAttack = setTimeout(function() {
 
                 // for (compSpecial = 6; compSpecial += 6; compSpecial += 6) {
-                //      console.log(compSpecial)
-                //      // $('.userHealth').text("User Health: " + (userHealth - compSpecial));
-                //  }
+                // 		console.log(compSpecial)
+                // 		// $('.userHealth').text("User Health: " + (userHealth - compSpecial));
+                // 	}
                 $('.playerTwo').html(kenAttacksLeft[Object.keys(kenAttacksLeft)[Math.floor(Math.random() * Object.keys(kenAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 4));
+                $('.damage').html('Attack Damage: ' + (comPoints += 8));
                 userHealth = userHealth - comPoints;
 
             }, 3000);
@@ -240,16 +220,16 @@ $(document).ready(function() {
                 $('.playerTwo').html(kenPlayerLeft);
 
                 // if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
-                //  userHealth = userHealth - 6;
+                // 	userHealth = userHealth - 6;
                 // } else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
-                //  userHealth = userHealth - 12;
+                // 	userHealth = userHealth - 12;
                 // }else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
-                //  userHealth = userHealth - 20;
+                // 	userHealth = userHealth - 20;
                 // }
             }, 6001);
 
         }
-        winLose();
+
     });
 
 
@@ -274,10 +254,10 @@ $(document).ready(function() {
             $('.playerOne').html(kenAttacksRight.kenPunchRight);
 
             // setTimeout(function(){
-            //  ryuPlayerLeft.hide().delay(2000).fadeIn();
+            // 	ryuPlayerLeft.hide().delay(2000).fadeIn();
 
-            //  $('.playerOne').html(kenAttacksRight.kenNoogieRight);
-            //  }, 2000);
+            // 	$('.playerOne').html(kenAttacksRight.kenNoogieRight);
+            // 	}, 2000);
 
             setTimeout(function() {
                 $('.playerOne').html(kenPlayerRight);
@@ -286,7 +266,7 @@ $(document).ready(function() {
 
             computerAttack = setTimeout(function() {
                 var random = $('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random() * Object.keys(ryuAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 5));
+                $('.damage').html('Attack Damage: ' + (comPoints += 4));
                 userHealth = userHealth - comPoints;
 
             }, 3500);
@@ -295,11 +275,11 @@ $(document).ready(function() {
                 $('.playerTwo').html(ryuPlayerLeft);
 
                 // if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
-                //  userHealth = userHealth - 6;
+                // 	userHealth = userHealth - 6;
                 // } else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
-                //  userHealth = userHealth - 12;
+                // 	userHealth = userHealth - 12;
                 // }else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
-                //  userHealth = userHealth - 20;
+                // 	userHealth = userHealth - 20;
                 // }
             }, 6001);
 
@@ -314,11 +294,11 @@ $(document).ready(function() {
             computerAttack = setTimeout(function() {
 
                 // for (compSpecial = 6; compSpecial += 6; compSpecial += 6) {
-                //      console.log(compSpecial)
-                //      // $('.userHealth').text("User Health: " + (userHealth - compSpecial));
-                //  }
+                // 		console.log(compSpecial)
+                // 		// $('.userHealth').text("User Health: " + (userHealth - compSpecial));
+                // 	}
                 $('.playerTwo').html(kenAttacksLeft[Object.keys(kenAttacksLeft)[Math.floor(Math.random() * Object.keys(kenAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 5));
+                $('.damage').html('Attack Damage: ' + (comPoints += 4));
                 userHealth = userHealth - comPoints;
 
             }, 3000);
@@ -328,15 +308,15 @@ $(document).ready(function() {
                 $('.playerTwo').html(kenPlayerLeft);
 
                 // if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
-                //  userHealth = userHealth - 6;
+                // 	userHealth = userHealth - 6;
                 // } else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
-                //  userHealth = userHealth - 12;
+                // 	userHealth = userHealth - 12;
                 // }else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
-                //  userHealth = userHealth - 20;
+                // 	userHealth = userHealth - 20;
                 // }
             }, 6001);
         }
-        winLose();
+
     });
 
 
@@ -367,28 +347,28 @@ $(document).ready(function() {
 
             computerAttack = setTimeout(function() {
                 $('.playerTwo').html(ryuAttacksLeft[Object.keys(ryuAttacksLeft)[Math.floor(Math.random() * Object.keys(ryuAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 3));
+                $('.damage').html('Attack Damage: ' + (comPoints += 5));
                 userHealth = userHealth - comPoints;
                 // if (Object.keys(ryuAttacksLeft) === [0]){
-                //  console.log('tired')
+                // 	console.log('tired')
                 // } else if (Object.keys(ryuAttacksLeft) === [1]){
-                //  console.log('tired')
+                // 	console.log('tired')
                 // } else if (Object.keys(ryuAttacksLeft) === [2]){
-                //  console.log('tired')
+                // 	console.log('tired')
                 // }
 
                 // if (ryuAttacksLeft[ran] == 0){
-                //      console.log(userHealth = userHealth - 6);
-                //  } 
-                //  else if (ryuAttacksLeft[ran] == 1){
-                //      console.log(userHealth = userHealth - 12);
-                //  }
-                //  else if (ryuAttacksLeft[ran] == 2){
-                //      console.log(userHealth = userHealth - 20);
-                //  }
-                //  else {
-                //      console.log('nothin');
-                //  }
+                // 		console.log(userHealth = userHealth - 6);
+                // 	} 
+                // 	else if (ryuAttacksLeft[ran] == 1){
+                // 		console.log(userHealth = userHealth - 12);
+                // 	}
+                // 	else if (ryuAttacksLeft[ran] == 2){
+                // 		console.log(userHealth = userHealth - 20);
+                // 	}
+                // 	else {
+                // 		console.log('nothin');
+                // 	}
             }, 1500);
 
 
@@ -408,11 +388,11 @@ $(document).ready(function() {
             computerAttack = setTimeout(function() {
 
                 // for (compSpecial = 6; compSpecial += 6; compSpecial += 6) {
-                //      console.log(compSpecial)
-                //      // $('.userHealth').text("User Health: " + (userHealth - compSpecial));
-                //  }
+                // 		console.log(compSpecial)
+                // 		// $('.userHealth').text("User Health: " + (userHealth - compSpecial));
+                // 	}
                 $('.playerTwo').html(kenAttacksLeft[Object.keys(kenAttacksLeft)[Math.floor(Math.random() * Object.keys(kenAttacksLeft).length)]])
-                $('.damage').html('Attack Damage: ' + (comPoints += 3));
+                $('.damage').html('Attack Damage: ' + (comPoints += 5));
                 userHealth = userHealth - comPoints;
 
             }, 3000);
@@ -422,42 +402,40 @@ $(document).ready(function() {
                 $('.playerTwo').html(kenPlayerLeft);
 
                 // if (computerAttack == ryuAttacksLeft.ryuPunchLeft){
-                //  userHealth = userHealth - 6;
+                // 	userHealth = userHealth - 6;
                 // } else if(computerAttack == ryuAttacksLeft.ryuKickLeft){
-                //  userHealth = userHealth - 12;
+                // 	userHealth = userHealth - 12;
                 // }else if(computerAttack == ryuAttacksLeft.ryuSpecialLeft){
-                //  userHealth = userHealth - 20;
+                // 	userHealth = userHealth - 20;
                 // }
             }, 6001);
         }
 
 
-        winLose();
+
     });
 
-    // if (userHealth <= 0) {
-    //     $('.block').text('YOU LOSE!');
+    if (userHealth <= 0) {
+        alert('hi')
+            $('.block').text('YOU LOSE!');
 
-    // } else if (comHealth <= 0) {
-    //     $('.block').text('WINNER!');
-    //     //reset userHealth to 100;
-    //     bossBattle();
-
-    //     }
-
-
-
-
-        //************************************ Attacks Boss ************************************
-    function bossBattle(){
+    } else if (comHealth <= 0) {
+        $('.block').text('WINNER!');
+        //reset userHealth to 100;
         $('.playerTwo').html(bossIntroLeft);
         setTimeout(function() {
             $('.playerTwo').html(boss);
         }, 1000);
-            $(document).on('click', '.special, .punch, .kick', function() {
-            $('.comHealth').text("Computer Health: " + 100);
-            $('.userHealth').text("User Health: " + 100);
+
+        $(document).on('click', '.special, .punch, .kick', function() {
+            $('.comHealth').text("Computer Health: " + comHealth);
+            $('.userHealth').text("User Health: " + userHealth);
         })
+
+
+
+        //************************************ Attacks Boss ************************************
+
         $(document).on('click', '.special', function() {
 
             special = (Math.floor(Math.random() * 10) + 25);
@@ -469,7 +447,7 @@ $(document).ready(function() {
                 comHealth = comHealth - 2;
             }
 
-            //ken   
+            //ken	
             special = (Math.floor(Math.random() * 15) + 15);
 
             if (special >= 25) {
@@ -647,44 +625,37 @@ $(document).ready(function() {
                 }, 6001);
             }
         });
-    
-    } //end boss function
+    }
+
 
 });
-
-
-
-
-
-
-
 // $(document).on('click','.punch', function () {
-//      special = (Math.floor(Math.random()* 10) + 25);
-//          kenPlayerRight.hide().delay(2500).fadeIn();
-//          $('.playerOne').append(kenAttacks.kenPunchRight)
-//          kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
-//          punch = (Math.floor(Math.random()* 8) + 10);
-//          var comAttack = setTimeout(function(){
-//          randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
-//            }, 3000);
+// 		special = (Math.floor(Math.random()* 10) + 25);
+// 			kenPlayerRight.hide().delay(2500).fadeIn();
+// 			$('.playerOne').append(kenAttacks.kenPunchRight)
+// 			kenAttacks.kenPunchRight.show().delay(2500).fadeOut();
+// 			punch = (Math.floor(Math.random()* 8) + 10);
+// 			var comAttack = setTimeout(function(){
+// 			randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+//     		  }, 3000);
 
-//          var comAttackPoint = setTimeout(function(){
+// 			var comAttackPoint = setTimeout(function(){
 
-//          for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
-//                  $('.userHealth').text("User Health: " + userHealth);
-//              }
-//          });
+// 			for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
+// 					$('.userHealth').text("User Health: " + userHealth);
+// 				}
+//     		});
 
-//          if (punch >= 14){
-//              comHealth = comHealth - 10;
-//          }else {
-//          $('.block').show().delay(2000).fadeOut();
-//              comHealth = comHealth - 2;
-//          } 
+// 			if (punch >= 14){
+// 				comHealth = comHealth - 10;
+// 			}else {
+// 			$('.block').show().delay(2000).fadeOut();
+// 				comHealth = comHealth - 2;
+// 			} 
 
 
 
-//  });
+// 	});
 // debugger;
 // special = (Math.floor(Math.random()* 10) + 25);
 
@@ -699,21 +670,21 @@ $(document).ready(function() {
 // punch = (Math.floor(Math.random()* 8) + 10);
 
 // var comAttack = setTimeout(function(){
-//  randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
+// 	randomMove = moves[Math.floor(Math.random()*ryuAttacks.length)];
 
 // }, 3000);
 
 // var comAttackPoint = setTimeout(function(){
 
 // for (userHealth = userHealth-6; userHealth <= 100; userHealth += 6) {
-//  $('.userHealth').text("User Health: " + userHealth);
+// 	$('.userHealth').text("User Health: " + userHealth);
 // }
 
 // if (punch >= 14){
-//  comHealth = comHealth - 10;
+// 	comHealth = comHealth - 10;
 // }else {
-//  $('.block').show().delay(2000).fadeOut();
-//  comHealth = comHealth - 2;
+// 	$('.block').show().delay(2000).fadeOut();
+// 	comHealth = comHealth - 2;
 // } 
 
 // $('.comHealth').text("Computer Health: " + comHealth);
@@ -723,11 +694,11 @@ $(document).ready(function() {
 
 
 // $(document).on('click', '.punch', function (){
-//  $('.playerTwo').append(kenAttacks.kenPunch);
+// 	$('.playerTwo').append(kenAttacks.kenPunch);
 
 // })
 
-//  $('.punch').on('click', function(){
-//          kenAttacks.kenPlayerLeft.hide().delay(2000).fadeIn();
-//      $('.playerTwo').append(kenAttacks.kenPunch);
-//      kenAttacks.kenPunch.show().delay(2000).fadeOut();
+// 	$('.punch').on('click', function(){
+// 			kenAttacks.kenPlayerLeft.hide().delay(2000).fadeIn();
+// 		$('.playerTwo').append(kenAttacks.kenPunch);
+// 		kenAttacks.kenPunch.show().delay(2000).fadeOut();
